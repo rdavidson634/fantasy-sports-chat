@@ -1,0 +1,11 @@
+.send-new-message-form {
+    border-style: dotted;
+    border-color: green;
+    position: absolute;
+    bottom: 5%;
+    left: 20%; 
+    right: 20%; 
+    margin-left: auto; 
+    margin-right: auto; 
+    height: 18%;
+  }

@@ -1,0 +1,18 @@
+.message-list {
+    border-style: dotted;
+    border-color: purple;
+    position: absolute;
+    left: 20%; 
+    right: 30%; 
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-top: 2%;
+    height: 70%;
+    width: 60%;
+}
+/* .message-list {
+    border-style: dotted;
+    border-color: purple;
+    position: absolute;
+    margin: auto
+} */

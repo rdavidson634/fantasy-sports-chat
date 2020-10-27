@@ -1,0 +1,9 @@
+.priority-messages {
+    border-style: dotted;
+    border-color: red;
+    position: absolute;
+    width: 20%;
+    height: 99%;
+    margin-right: 0%;
+    right: 0%;
+  }
