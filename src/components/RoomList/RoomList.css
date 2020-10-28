@@ -1,7 +1,7 @@
-.league-list {
+.room-list {
     border-style: dotted;
     border-color: brown;
-    position: absolute;
+    position: static;
     width: 20%;
     height: 99%;
     

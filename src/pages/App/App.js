@@ -7,18 +7,27 @@ import './App.css';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage'
 import ChatPage from '../ChatPage/ChatPage';
+import CreateRoomPage from '../CreateRoomPage/CreateRoomPage'
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      user: userService.getUser()
+    state = {
+      user: userService.getUser(),
+      rooms: []
     };
-  }
+  
 
   async componentDidMount() {
     const rooms = await roomAPI.getAll();
     this.setState({ rooms: rooms })
+  }
+
+  handleCreateRoom = async newRoomData => {
+    newRoomData.user = this.state.user._id
+    const newRoom = await roomAPI.create(newRoomData);
+    this.setState(state => ({
+      rooms: [...state.rooms, newRoom]
+    }),
+    () => this.props.history.push('/'));
   }
   
   handleLogout = () => {
@@ -37,6 +46,7 @@ class App extends Component {
           <Route exact path='/' render={() =>
             <ChatPage 
               user={this.state.user}
+              rooms={this.state.rooms}
               handleLogout={this.handleLogout}
             />
           }/>
@@ -49,6 +59,12 @@ class App extends Component {
           <Route exact path='/login' render={({ history }) => 
             <LoginPage
               handleSignupOrLogin={this.handleSignupOrLogin}
+              history={history}
+            />
+          }/>
+          <Route exact path='/create-room' render={({ history }) => 
+            <CreateRoomPage
+              handleCreateRoom={this.handleCreateRoom}
               history={history}
             />
           }/>

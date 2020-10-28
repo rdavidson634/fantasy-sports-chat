@@ -4,6 +4,7 @@ const roomsCtrl = require('../../controllers/api/rooms')
 
 /*-- Protected Routes --*/
 router.get('/', roomsCtrl.index)
+router.post('/', checkAuth, roomsCtrl.create);
 
 
 

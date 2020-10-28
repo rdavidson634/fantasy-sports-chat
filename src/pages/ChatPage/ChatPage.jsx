@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar'
-import LeagueList from '../../components/LeagueList/LeagueList'
+import RoomList from '../../components/RoomList/RoomList'
 import MessageList from '../../components/MessageList/MessageList'
 import PriorityMessages from '../../components/PriorityMessages/PriorityMessages'
 import SendNewMessageForm from '../../components/SendNewMessageForm/SendNewMessageForm'
@@ -17,7 +17,13 @@ const ChatPage = (props) => {
           />
         </header>
       
-        <LeagueList />
+        {props.rooms.map(room => 
+            <RoomList 
+                room={room}
+                key={room._id}
+            />
+        )}
+
         <MessageList />
         <SendNewMessageForm />
         <PriorityMessages />

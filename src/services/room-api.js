@@ -8,3 +8,11 @@ export function getAll() {
         headers: {'content-type': 'application/json', 'Authorization': 'Bearer ' + tokenService.getToken()},
     }).then(res => res.json());
 }
+
+export function create(room) {
+    return fetch(BASE_URL, {
+        method: 'POST',
+        headers: {'content-type': 'application/json', 'Authorization': 'Bearer ' + tokenService.getToken()},
+        body: JSON.stringify(room)
+    }).then(res => res.json());
+}
