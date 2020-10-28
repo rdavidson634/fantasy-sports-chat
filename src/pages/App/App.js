@@ -1,13 +1,9 @@
-import {Component} from 'react'
+import react, {Component} from 'react'
 import Talk from "talkjs";
+import * as roomAPI from '../../services/room-api'
 import userService from '../../utils/userService'
 import { Route, Switch } from 'react-router-dom';
-import LeagueList from '../../components/LeagueList/LeagueList'
-import MessageList from '../../components/MessageList/MessageList'
-import PriorityMessages from '../../components/PriorityMessages/PriorityMessages'
-import SendNewMessageForm from '../../components/SendNewMessageForm/SendNewMessageForm'
 import './App.css';
-import NavBar from '../../components/NavBar/NavBar';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage'
 import ChatPage from '../ChatPage/ChatPage';
@@ -19,9 +15,12 @@ class App extends Component {
       user: userService.getUser()
     };
   }
+
+  async componentDidMount() {
+    const rooms = await roomAPI.getAll();
+    this.setState({ rooms: rooms })
+  }
   
-
-
   handleLogout = () => {
     userService.logout();
     this.setState({ user: null });
@@ -31,8 +30,6 @@ class App extends Component {
     this.setState({ user: userService.getUser() });
   }
 
-
-
   render() {
     return (
       <div className="app">
@@ -40,6 +37,7 @@ class App extends Component {
           <Route exact path='/' render={() =>
             <ChatPage 
               user={this.state.user}
+              handleLogout={this.handleLogout}
             />
           }/>
           <Route exact path='/signup' render={({ history }) => 

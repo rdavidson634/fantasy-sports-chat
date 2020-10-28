@@ -13,6 +13,7 @@ const ChatPage = (props) => {
         <header className="navbar-brand">
           <NavBar 
             user={props.user}
+            handleLogout={props.handleLogout}
           />
         </header>
       

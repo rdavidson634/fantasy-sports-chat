@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const roomSchema = new Schema({
-    owners: [],
+    owner: String,
     members: [],
     title: {type: String, required: true},
     type: String

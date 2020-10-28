@@ -4,10 +4,9 @@ import { Link, NavLink, Route, Switch } from 'react-router-dom';
 import './NavBar.css';
 
 const NavBar = (props) => {
-  
   let nav = props.user ?
     <div>
-      <NavLink to='' onClick={props.handleLogout} className='NavBar-link'>LOG OUT</NavLink>
+      <Link to='' onClick={props.handleLogout} className='NavBar-link'>LOG OUT</Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <span className='NavBar-welcome'>WELCOME, {props.user.name}</span>
     </div>
